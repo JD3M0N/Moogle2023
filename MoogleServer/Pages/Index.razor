@@ -1,0 +1,44 @@
+﻿@page "/"
+
+<PageTitle>Moogle!</PageTitle>
+
+<h1>🔍 Moogle!</h1>
+
+<input class="p-1 my-4" @bind="query" @onkeyup="@Press" placeholder="Introduzca su búsqueda">
+
+<button type="default" class="btn btn-primary" @onclick="RunQuery">🔍 Buscar</button>
+
+@if (!string.IsNullOrEmpty(result.Suggestion)) {
+    <div class="suggestion">
+        <p>se muestran resultados de  <strong><a href="#">@result.Suggestion</a></strong>?</p>
+    </div>
+}
+
+<ul class="results">
+@foreach (var item in result.Items()) {
+    <li>
+        <div class="item">
+            <p class="title">@item.Title</p>
+            <p class="title">@item.Score</p>
+            <p>... @item.Snippet ...</p>
+        </div>
+    </li>
+}
+</ul>
+
+@code {
+    private string query = "";
+    private SearchResult result = new SearchResult();
+
+    private void RunQuery() {
+        result = Moogle.Query(query);
+    }
+    
+    private void Press(KeyboardEventArgs e)
+    {
+        if(e.Code=="Enter")
+        {
+            RunQuery();
+        }
+    }
+}

@@ -1,0 +1,52 @@
+\section{Preaculo}
+\subsection{Preaculo}
+
+\begin{frame}
+	\frametitle{Inicializando el Moogle}
+	Explicacion de la realizacion del precalculo:
+ Para el funcionamiento mas optimo de la aplicacion primero
+ realizamos un precalculo de las operaciones que se puede ir
+ tomando de antemano sin saber la consulta asi cuando el usuario
+ decida realizar su consulta consumira menos tiempo. Para se ha
+ creado el metodo Awake() que basta llamarlo antes de iniciar la
+ aplicacion para que lea la carpeta content procesando los
+ articulos y guardandolos en una estructura global y guardando
+ tambien una estructura con todas las palabras del que
+ aparecieron en el content y llamando al resto de metodos utiles
+ para posteriormente procesar el modelo vectorial.
+
+
+\end{frame}
+
+
+\begin{frame}
+	La estructura principal se basa en un Dictionary<string,
+ Dictionary<string, double», donde el primer string seria el path al
+ documento en el content como key y su valor seria un Dictionary
+ con las palabras que tiene el documento como key acompanadas
+ de la cantidad de veces que se repite esa palabra como value.
+ El mismo llamado del la estructura principal aprovechando el
+ poder de calculo del indexado de las palabras a los diccionarios
+ de los documento se guarda un Diccionario global con todas las
+ palabras que estan presetnes en el content con un value de la
+ cantidad de documentos en los aparecio la palabra
+ Posteeriormente se precalcula el Inverse Docuemnt Frequency
+ (IDF), el Time Frequency (TF) y el Word Value Weight de la
+ estructura principal para luego de realizada la consulta sea mas
+ optima esta. Para el ultimo paso del precalculo se inicializa un
+ Dataset de sinonimos para luego realizar una consulta mas
+ optima buscando tambien los sinonimos de esta
+\end{frame}
+
+
+\begin{frame}
+	
+	$$
+		IDF_{i}=\lg_{10}{(\frac{N}{n_{i}})}
+	$$
+	
+	$$
+		W_{ij}=\frac{freq_{ij}}{max_{l}freq_{lj}} IDF_{i}
+	$$
+\end{frame}
+

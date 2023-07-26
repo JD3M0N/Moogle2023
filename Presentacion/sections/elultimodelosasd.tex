@@ -1,0 +1,37 @@
+\section{Arquitectura Básica}
+\begin{frame}{Arquitectura Básica}
+	Durante el desarrollo de la aplicación fueron creadas las clases:
+	\begin{itemize}
+		\item Reader: Identifica los documentos y normaliza sus textos correspondientes.
+		\item TF-IDF: Calcula el peso de los documentos previamente identificados.
+		\item Search: Normaliza la búsqueda (query) introducida y determina los documentos más relevantes.
+		\item Operators: Trabaja con los operadores utilizados en la query, influyendo directamente
+		      en el puntaje de los documentos con más relevancia.
+		\item Snippet: Muestra una porción de texto de cada documento relevante y una posible
+		      sugerencia al usuario.
+		\item Initialize: Utiliza las funciones de las clases \textbf{Reader} y \textbf{TF-IDF}
+		      a la hora de lanzar la aplicación.
+	\end{itemize}
+\end{frame}
+% Objetos mas importantes de las clases que son los diccionarios Files IDF Texts
+\begin{frame}{}
+La estructura de datos más importante utilizada son los diccionarios.\\
+Haciendo uso de estos se realizan las operaciones pertinentes para determinar los mejores
+resultados de acuerdo a la consulta realizada.
+\newline
+\newline
+Tengamos en cuenta que los principales diccionarios a utilizar durante el Preprocesamiento son:
+\begin{itemize}
+	\item Files
+	\item IDF
+\end{itemize}
+Mientras que durante la Consulta:
+\begin{itemize}
+	\item QueryWeight
+	\item Score
+\end{itemize}
+% 	\item QueryWeight
+% 	\item Score
+% \end{itemize}
+\end{frame}
+
